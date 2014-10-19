@@ -4,7 +4,7 @@ import time
 print "Welcome to Like All Posts"
 Token = raw_input("\nGo to https://developers.facebook.com/tools/explorer ,\nclick on get access token,\ncheck on all the permissions in basic and extended permissions \nand paste the access token here\n")
 PAGEID = raw_input("\nEnter the numeric page_id/user_id, you can get it in the URL of the page/user.Ex:www.facebook.com/pageid\n")
-print "\nPlease wait while all the posts by " + PAGEID + " is being liked\n"
+print "\nPlease wait while all the posts by " + PAGEID + " are being liked\n"
 
 def like():
     query = ("SELECT post_id FROM stream WHERE "
