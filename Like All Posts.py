@@ -7,16 +7,11 @@ PAGEID = raw_input("\nEnter the numeric page_id/user_id, you can get it in the U
 print "\nPlease wait while all the posts by " + PAGEID + " are being liked\n"
 
 def like():
-    query = ("SELECT post_id FROM stream WHERE "
-            "source_id ="+PAGEID+"  AND actor_id="+PAGEID+" LIMIT 200")
-    payload = {'q': query, 'access_token': Token}
-    r = requests.get('https://graph.facebook.com/fql', params=payload)
+    r = requests.get("https://graph.facebook.com/" + PAGEID + "/posts?access_token=" + Token)
     result = json.loads(r.text)
     for wallpost in result['data']:
-        requests.post("https://graph.facebook.com/" + str(wallpost['post_id'])
-                      + "/likes/?access_token=" + Token
-                      + "&method=POST")        
-    print "\nAll posts liked!"
+        requests.post("https://graph.facebook.com/" + str(wallpost['id']) + "/likes/?access_token=" + Token + "&method=POST")
+    print "\nAll posts liked!\n"
 
 if __name__ == '__main__':
     like()
